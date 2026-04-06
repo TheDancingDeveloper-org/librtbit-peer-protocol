@@ -561,7 +561,7 @@ mod tests {
 
     use crate::extended::handshake::ExtendedHandshake;
 
-    const EXTENDED: &[u8] = include_bytes!("../../resources/test/extended-handshake.bin");
+    const EXTENDED: &[u8] = include_bytes!("../resources/test/extended-handshake.bin");
 
     use super::*;
     #[test]
