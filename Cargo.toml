@@ -12,7 +12,7 @@ serde_derive = "1"
 byteorder = "1"
 buffers = { version = "0.1.1", registry = "forgejo", package = "librtbit-buffers" }
 bencode = { version = "0.1.1", registry = "forgejo", package = "librtbit-bencode" }
-clone_to_owned = { version = "0.1.0", registry = "forgejo", package = "librtbit-clone-to-owned" }
+clone_to_owned = { version = "0.1.1", registry = "forgejo", package = "librtbit-clone-to-owned" }
 librtbit-core = { version = "0.1.1", registry = "forgejo" }
 bitvec = "1"
 anyhow = "1"
