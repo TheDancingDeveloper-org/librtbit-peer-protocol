@@ -28,8 +28,11 @@ use super::MY_EXTENDED_UT_METADATA;
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone, Copy, PartialEq, Eq)]
 pub struct PeerExtendedMessageIds {
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ut_metadata: Option<u8>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ut_pex: Option<u8>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ut_holepunch: Option<u8>,
 }
 
@@ -167,6 +170,46 @@ mod tests {
             ),
             "expected trailing bytes error, got {res:?}"
         )
+    }
+
+    /// Regression: `PeerExtendedMessageIds` with only some fields set must
+    /// serialize without panicking. Before adding `skip_serializing_if`
+    /// bencode would reject the `None` fields outright ("bencode doesn't
+    /// support None"). This affects callers that hand-construct the struct
+    /// for tests, mock peers, or for advertising a *partial* extension
+    /// set (e.g. ut_metadata-only peers).
+    #[test]
+    fn test_peer_extended_message_ids_partial_serialize_round_trip() {
+        use crate::extended::PeerExtendedMessageIds;
+        use bencode::{bencode_serialize_to_writer, from_bytes};
+
+        let partial = PeerExtendedMessageIds {
+            ut_metadata: Some(3),
+            ut_pex: None,
+            ut_holepunch: None,
+        };
+        let mut buf = Vec::new();
+        bencode_serialize_to_writer(partial, &mut buf).expect("partial serialize ok");
+
+        let decoded: PeerExtendedMessageIds = from_bytes(&buf).expect("round-trip ok");
+        assert_eq!(decoded.ut_metadata, Some(3));
+        assert_eq!(decoded.ut_pex, None);
+        assert_eq!(decoded.ut_holepunch, None);
+
+        // Also confirm the wire bytes contain only the set field's key —
+        // peers shouldn't see `ut_pex` / `ut_holepunch` keys at all.
+        let wire = std::str::from_utf8(&buf).unwrap();
+        assert!(wire.contains("ut_metadata"));
+        assert!(!wire.contains("ut_pex"));
+        assert!(!wire.contains("ut_holepunch"));
+
+        // Sanity: a fully-empty struct also round-trips.
+        let empty = PeerExtendedMessageIds::default();
+        let mut buf = Vec::new();
+        bencode_serialize_to_writer(empty, &mut buf).expect("empty serialize ok");
+        let decoded: PeerExtendedMessageIds = from_bytes(&buf).unwrap();
+        assert_eq!(decoded, empty);
+        assert_eq!(buf, b"de"); // empty bencode dict
     }
 
     #[test]
