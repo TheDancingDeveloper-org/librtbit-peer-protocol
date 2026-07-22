@@ -585,7 +585,7 @@ dependencies = [
 [[package]]
 name = "librtbit-bencode"
 version = "0.1.0"
-source = "git+https://github.com/AusAgentSmith-org/librtbit-bencode.git?tag=v0.1.0#86a794304eeb44f008650914700f70f59d0a5b7e"
+source = "git+http://100.92.54.45:3002/indexarr/librtbit-bencode.git?tag=v0.1.0#106ebdb7abf7d34a14971135b78a45dd6f5ff35b"
 dependencies = [
  "anyhow",
  "arrayvec",
@@ -601,7 +601,7 @@ dependencies = [
 [[package]]
 name = "librtbit-buffers"
 version = "0.1.0"
-source = "git+https://github.com/AusAgentSmith-org/librtbit-buffers.git?tag=v0.1.0#3385f67c4dad792020603542eeb11853a5a60fc7"
+source = "git+http://100.92.54.45:3002/indexarr/librtbit-buffers.git?tag=v0.1.0#9ccc901158813a4d83b1a4effa7be2e25fdd66e3"
 dependencies = [
  "bytes",
  "librtbit-clone-to-owned",
@@ -612,7 +612,7 @@ dependencies = [
 [[package]]
 name = "librtbit-clone-to-owned"
 version = "0.1.0"
-source = "git+https://github.com/AusAgentSmith-org/librtbit-clone-to-owned.git?tag=v0.1.0#205d2c1b13a18bd4c50856a0e2fece02e61716b4"
+source = "git+http://100.92.54.45:3002/indexarr/librtbit-clone-to-owned.git?tag=v0.1.0#bbb6b5888b1904f8b8e384a867a78fea6536aeb2"
 dependencies = [
  "bytes",
 ]
@@ -620,7 +620,7 @@ dependencies = [
 [[package]]
 name = "librtbit-core"
 version = "0.1.0"
-source = "git+https://github.com/AusAgentSmith-org/librtbit-core.git?tag=v0.1.0#1611b846d41302fcce365e3356d425f188269115"
+source = "git+http://100.92.54.45:3002/indexarr/librtbit-core.git?tag=v0.1.0#f15cc24ba7ec350acc242eb4a9f31fdc4a139995"
 dependencies = [
  "anyhow",
  "bytes",

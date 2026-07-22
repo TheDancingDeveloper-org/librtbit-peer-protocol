@@ -21,6 +21,15 @@ itertools = "0.14"
 thiserror = "2"
 tracing = "0.1"
 
+[patch."https://github.com/AusAgentSmith-org/librtbit-bencode.git"]
+librtbit-bencode = { git = "http://100.92.54.45:3002/indexarr/librtbit-bencode.git", tag = "v0.1.0" }
+
+[patch."https://github.com/AusAgentSmith-org/librtbit-buffers.git"]
+librtbit-buffers = { git = "http://100.92.54.45:3002/indexarr/librtbit-buffers.git", tag = "v0.1.0" }
+
+[patch."https://github.com/AusAgentSmith-org/librtbit-clone-to-owned.git"]
+librtbit-clone-to-owned = { git = "http://100.92.54.45:3002/indexarr/librtbit-clone-to-owned.git", tag = "v0.1.0" }
+
 [dev-dependencies]
 criterion = "0.7"
 
