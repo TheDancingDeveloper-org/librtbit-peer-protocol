@@ -10,25 +10,16 @@ repository = "http://100.92.54.45:3002/indexarr/librtbit-peer-protocol"
 serde = "1"
 serde_derive = "1"
 byteorder = "1"
-buffers = { version = "0.1.2", registry = "forgejo", package = "librtbit-buffers" }
-bencode = { version = "0.1.5", registry = "forgejo", package = "librtbit-bencode" }
-clone_to_owned = { version = "0.1.1", registry = "forgejo", package = "librtbit-clone-to-owned" }
-librtbit-core = { version = "0.1.5", registry = "forgejo" }
+buffers = { git = "https://github.com/TheDancingDeveloper-org/librtbit-buffers.git", package = "librtbit-buffers" }
+bencode = { git = "https://github.com/TheDancingDeveloper-org/librtbit-bencode.git", package = "librtbit-bencode" }
+clone_to_owned = { git = "https://github.com/TheDancingDeveloper-org/librtbit-clone-to-owned.git", package = "librtbit-clone-to-owned" }
+librtbit-core = { git = "https://github.com/TheDancingDeveloper-org/librtbit-core.git" }
 bitvec = "1"
 anyhow = "1"
 bytes = "1"
 itertools = "0.14"
 thiserror = "2"
 tracing = "0.1"
-
-[patch."https://github.com/AusAgentSmith-org/librtbit-bencode.git"]
-librtbit-bencode = { git = "http://100.92.54.45:3002/indexarr/librtbit-bencode.git", tag = "v0.1.0" }
-
-[patch."https://github.com/AusAgentSmith-org/librtbit-buffers.git"]
-librtbit-buffers = { git = "http://100.92.54.45:3002/indexarr/librtbit-buffers.git", tag = "v0.1.0" }
-
-[patch."https://github.com/AusAgentSmith-org/librtbit-clone-to-owned.git"]
-librtbit-clone-to-owned = { git = "http://100.92.54.45:3002/indexarr/librtbit-clone-to-owned.git", tag = "v0.1.0" }
 
 [dev-dependencies]
 criterion = "0.8"
